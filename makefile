@@ -1,0 +1,2 @@
+db:
+	docker run -d --rm --name=library-service-db -e MYSQL_ROOT_PASSWORD='library-service' -e MYSQL_USER='library-service' -e MYSQL_PASSWORD='library-service' -e MYSQL_DATABASE='library-service' -p 3306:3306 -p 33060:33060 mysql:8.0
