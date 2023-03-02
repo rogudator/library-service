@@ -12,7 +12,7 @@ func NewAuthorMysql(db *sqlx.DB) *AuthorMysql {
 	return &AuthorMysql{db: db}
 }
 
-func (r *AuthorMysql) GetAuthorOfBook(bookName string) ([]string, error) {
+func (r *AuthorMysql) GetAuthorsOfBook(bookName string) ([]string, error) {
 	var books []string
 
 	query := `

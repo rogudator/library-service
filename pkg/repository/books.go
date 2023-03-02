@@ -12,7 +12,7 @@ func NewBookMysql(db *sqlx.DB) *BookMysql {
 	return &BookMysql{db: db}
 }
 
-func (r *BookMysql) GetBookByAuthor(authorName string) ([]string, error) {
+func (r *BookMysql) GetBooksByAuthor(authorName string) ([]string, error) {
 	var books []string
 
 	query := `

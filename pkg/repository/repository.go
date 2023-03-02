@@ -2,22 +2,22 @@ package repository
 
 import "github.com/jmoiron/sqlx"
 
-type Book interface {
-	GetBookByAuthor(authorName string) ([]string, error)
+type Books interface {
+	GetBooksByAuthor(authorName string) ([]string, error)
 }
 
-type Author interface {
-	GetAuthorOfBook(bookName string) ([]string, error)
+type Authors interface {
+	GetAuthorsOfBook(bookName string) ([]string, error)
 }
 
 type Repository struct {
-	Book
-	Author
+	Books
+	Authors
 }
 
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
-		Book:   NewBookMysql(db),
-		Author: NewAuthorMysql(db),
+		Books:   NewBookMysql(db),
+		Authors: NewAuthorMysql(db),
 	}
 }
