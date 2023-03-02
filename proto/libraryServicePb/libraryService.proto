@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./proto/libraryServicePb";
+
+message BooksRequest {
+    string authorName = 1;
+}
+
+message BooksResponse {
+    repeated string books = 1; 
+}
+
+message AuthorsRequest {
+    string bookName = 1;
+}
+
+message AuthorsResponse {
+    repeated string authors = 1; 
+}
+
+service LibraryService {
+    rpc GetBooksByAuthor (BooksRequest) returns (BooksResponse);
+    rpc GetAuthorsOfBook (AuthorsRequest) returns (AuthorsResponse);
+}
