@@ -8,10 +8,13 @@ type BookMysql struct {
 	db *sqlx.DB
 }
 
+// Конструктор стуктуры реализующей методы описанные в
+// интерфейсе Books из файла repository.go
 func NewBookMysql(db *sqlx.DB) *BookMysql {
 	return &BookMysql{db: db}
 }
 
+// Эта функция делает запрос в базу данных и выводит книги заданного автора.
 func (r *BookMysql) GetBooksByAuthor(authorName string) ([]string, error) {
 	var books []string
 

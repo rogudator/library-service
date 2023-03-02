@@ -1,0 +1,9 @@
+host: "localhost"
+port: "50051"
+
+db:
+  user: "library-service"
+  password: "qwerty"
+  host: "localhost"
+  port: "3306"
+  database: "library-service"

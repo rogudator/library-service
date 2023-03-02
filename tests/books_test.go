@@ -12,6 +12,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+// В данном тесте GetBooksByAuthor есть 4 вида поведения, когда:
+// 1. У автора несколько книг
+// 2. У автора одна книга
+// 3. Пустые входные данные
+// 4. Входных данных нет в библеотеке
 func TestGetBooksByAuthor(t *testing.T) {
 	type mockBehavior func(s *mock_service.MockBooks, author string)
 	testTable := []struct {
@@ -48,7 +53,7 @@ func TestGetBooksByAuthor(t *testing.T) {
 			authorName:   "",
 			mockBehavior: func(s *mock_service.MockBooks, author string) {},
 			books:        nil,
-			err:          handlers.ErrWrongName,
+			err:          handlers.ErrNoResults,
 		},
 		{
 			name:       "WrongInput",

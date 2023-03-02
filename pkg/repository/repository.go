@@ -1,3 +1,4 @@
+// Этот пакет является слоем взаимодействия с базой данных MySQL.
 package repository
 
 import "github.com/jmoiron/sqlx"
@@ -15,6 +16,8 @@ type Repository struct {
 	Authors
 }
 
+// Конструктор repository с логикой взаимодействия с бд.
+// Потом repository нужен будет для конструктора слоя service.
 func NewRepository(db *sqlx.DB) *Repository {
 	return &Repository{
 		Books:   NewBookMysql(db),
