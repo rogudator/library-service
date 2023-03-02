@@ -9,7 +9,7 @@ type BookMysql struct {
 }
 
 // Конструктор стуктуры реализующей методы описанные в
-// интерфейсе Books из файла repository.go
+// интерфейсе Books из файла repository.go.
 func NewBookMysql(db *sqlx.DB) *BookMysql {
 	return &BookMysql{db: db}
 }
@@ -18,12 +18,16 @@ func NewBookMysql(db *sqlx.DB) *BookMysql {
 func (r *BookMysql) GetBooksByAuthor(authorName string) ([]string, error) {
 	var books []string
 
+	err := checkAuthor(r, authorName); if err != nil {
+		return nil, err
+	}
+
 	query := `
-	select b.name  from library l 
-	inner join authors a 
-	on l.id_author = a.id 
-	inner join books b 
-	on l.id_book = b.id
+	SELECT b.name  FROM library l 
+	INNER JOIN authors a 
+	ON l.id_author = a.id 
+	INNER JOIN books b 
+	ON l.id_book = b.id
 	WHERE a.name = ?;
 	`
 	rows, err := r.db.DB.Query(query, authorName)
@@ -40,4 +44,29 @@ func (r *BookMysql) GetBooksByAuthor(authorName string) ([]string, error) {
 	}
 
 	return books, nil
+}
+
+// Проверка, есть ли автор в библиотеке.
+func checkAuthor(r *BookMysql, authorName string) error{
+	query := `
+	SELECT name FROM authors
+	WHERE name = ?;
+	`
+
+	rows, err := r.db.DB.Query(query, authorName)
+	if err != nil {
+		return err
+	}
+	
+	var name string
+	for rows.Next() {
+	if err = rows.Scan(&name); err != nil {
+		return err
+	}
+}
+	if name == "" {
+		return ErrAuthorNotInLibrary
+	}
+
+	return nil
 }
