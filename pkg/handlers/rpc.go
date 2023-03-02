@@ -8,8 +8,8 @@ import (
 )
 
 var (
-	ErrNoNameEnteredError = errors.New("no name entered")
-	ErrNoBooks = errors.New("there are no books by this author")
+	ErrWrongName = errors.New("wrong input")
+	ErrNoBooks   = errors.New("there are no books by this author")
 	ErrNoAuthors = errors.New("book has no author")
 )
 

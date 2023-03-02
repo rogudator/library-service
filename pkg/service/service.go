@@ -2,6 +2,8 @@ package service
 
 import "github.com/rogudator/library-service/pkg/repository"
 
+//go:generate mockgen -source=service.go -destination=mocks/mock.go
+
 type Books interface {
 	GetBooksByAuthor(authorName string) ([]string, error)
 }

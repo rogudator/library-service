@@ -9,7 +9,7 @@ import (
 func (rpc *RPC) GetAuthorsOfBook(ctx context.Context, req *libraryServicePb.AuthorsRequest) (*libraryServicePb.AuthorsResponse, error) {
 	bookName := req.GetBookName()
 	if bookName == "" {
-		return nil, ErrNoNameEnteredError
+		return nil, ErrWrongName
 	}
 	authors, err := rpc.services.GetAuthorsOfBook(bookName)
 	if err != nil {
