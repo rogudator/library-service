@@ -53,7 +53,7 @@ func TestGetBooksByAuthor(t *testing.T) {
 			authorName:   "",
 			mockBehavior: func(s *mock_service.MockBooks, author string) {},
 			books:        nil,
-			err:          handlers.ErrEmptyInput,
+			err:          handlers.ErrIncorrectInput,
 		},
 		{
 			name:       "WrongInput",
