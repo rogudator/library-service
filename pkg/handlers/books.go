@@ -20,7 +20,7 @@ func (rpc *RPC) GetBooksByAuthor(ctx context.Context, req *libraryServicePb.Book
 		return nil, err
 	}
 	if len(books) == 0 {
-		return nil, ErrNoBooks
+		return nil, ErrAuthorNotPresent
 	}
 	res := libraryServicePb.BooksResponse{
 		Books: books,

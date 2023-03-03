@@ -16,11 +16,6 @@ func NewBookMysql(db *sqlx.DB) *BookMysql {
 
 // Эта функция делает запрос в базу данных и выводит книги заданного автора.
 func (r *BookMysql) GetBooksByAuthor(authorName string) ([]string, error) {
-	var books []string
-
-	err := checkAuthor(r, authorName); if err != nil {
-		return nil, err
-	}
 
 	query := `
 	SELECT b.name  FROM library l 
@@ -35,6 +30,7 @@ func (r *BookMysql) GetBooksByAuthor(authorName string) ([]string, error) {
 		return nil, err
 	}
 
+	var books []string
 	for rows.Next() {
 		var name string
 		if err = rows.Scan(&name); err != nil {
@@ -44,29 +40,4 @@ func (r *BookMysql) GetBooksByAuthor(authorName string) ([]string, error) {
 	}
 
 	return books, nil
-}
-
-// Проверка, есть ли автор в библиотеке.
-func checkAuthor(r *BookMysql, authorName string) error{
-	query := `
-	SELECT name FROM authors
-	WHERE name = ?;
-	`
-
-	rows, err := r.db.DB.Query(query, authorName)
-	if err != nil {
-		return err
-	}
-	
-	var name string
-	for rows.Next() {
-	if err = rows.Scan(&name); err != nil {
-		return err
-	}
-}
-	if name == "" {
-		return ErrAuthorNotInLibrary
-	}
-
-	return nil
 }

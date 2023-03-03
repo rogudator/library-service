@@ -17,9 +17,9 @@ CREATE TABLE library (
     FOREIGN KEY (id_book) REFERENCES books(id)
 );
 
-INSERT INTO authors(name) VALUES ('J.K. Rowling'), ('Karen C. Timberlake'), ('William Timberlake'), ('Leo Tolstoy'), ('Mark Twain');
+INSERT INTO authors(name) VALUES ('J.K. Rowling'), ('Karen C. Timberlake'), ('William Timberlake'), ('Leo Tolstoy');
 
-INSERT INTO books(name) VALUES ("Philosopher's Stone"),( 'Chamber of Secrets'),( 'Prisoner of Azkaban'),('Goblet of Fire'),( 'Order of the Phoenix'),( 'Half-Blood Prince'),( 'Deathly Hallows'), ('Chemistry'), ('Organic Chemistry'), ('Advanced Chemistry'), ('Anna Karenina'),('Russian Folktales');
+INSERT INTO books(name) VALUES ("Harry Potter and Philosopher's Stone"),( 'Harry Potter and Chamber of Secrets'),( 'Harry Potter and Prisoner of Azkaban'),('Harry Potter and Goblet of Fire'),( 'Harry Potter and Order of the Phoenix'),('Harry Potter and Half-Blood Prince'),( 'Harry Potter and Deathly Hallows'), ('Chemistry'), ('Organic Chemistry'), ('Advanced Chemistry'), ('Anna Karenina');
 
 INSERT INTO library (id_author, id_book) VALUES (1,1),
 (1,2),

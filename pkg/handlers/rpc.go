@@ -9,9 +9,9 @@ import (
 
 // Список возможных ошибок:
 var (
-	ErrNoResults = errors.New("there are no results")
-	ErrNoBooks   = errors.New("there are no books by this author")
-	ErrNoAuthors = errors.New("book has no author")
+	ErrNoResults        = errors.New("there are no results")
+	ErrAuthorNotPresent = errors.New("library does not have this author")
+	ErrBookNotPresent   = errors.New("library does not have this book")
 )
 
 // В предыдущих слоях (service и repository) в основном была только

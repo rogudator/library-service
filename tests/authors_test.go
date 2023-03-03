@@ -59,10 +59,10 @@ func TestGetAuthorsOfBook(t *testing.T) {
 			name:     "Wrong input",
 			bookName: "Kemistry",
 			mockBehavior: func(s *mock_service.MockAuthors, book string) {
-				s.EXPECT().GetAuthorsOfBook(book).Return(nil, handlers.ErrNoBooks)
+				s.EXPECT().GetAuthorsOfBook(book).Return(nil, handlers.ErrAuthorNotPresent)
 			},
 			authors: nil,
-			err:     handlers.ErrNoBooks,
+			err:     handlers.ErrAuthorNotPresent,
 		},
 	}
 

@@ -1,16 +1,7 @@
 // Этот пакет является слоем взаимодействия с базой данных MySQL.
 package repository
 
-import (
-	"errors"
-
-	"github.com/jmoiron/sqlx"
-)
-
-var (
-	ErrAuthorNotInLibrary = errors.New("this author is not presented by library")
-	ErrBookNotInLibrary = errors.New("this book does not exist in library")
-)
+import "github.com/jmoiron/sqlx"
 
 type Books interface {
 	GetBooksByAuthor(authorName string) ([]string, error)

@@ -2,6 +2,7 @@
 package service
 
 import "github.com/rogudator/library-service/pkg/repository"
+
 // Внизу специальный комментарий Mockgen для автогенерации моков. Моки понадобятся для написания unit тестов.
 //go:generate mockgen -source=service.go -destination=mocks/mock.go
 

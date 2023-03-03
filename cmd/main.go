@@ -21,7 +21,7 @@ func main() {
 	if err := initConfig(); err != nil {
 		log.Fatalf("error initializing configs: %s", err.Error())
 	}
-	
+
 	// Подключение к базе данных.
 	db, err := repository.NewMysqlDB(repositoryConfig())
 	if err != nil {
@@ -32,9 +32,9 @@ func main() {
 	// У нас есть три слоя:
 	// 1. Repository для связи с базой данных
 	repos := repository.NewRepository(db)
-	// 2. Services соединяет слой работы с базой данных со слоем работы с grpc
+	// 2. Services соединяет слой работы с базой данных со слоем работы с gRPC
 	services := service.NewService(repos)
-	// 3. Handlers нужен для коммуникации по grpc
+	// 3. Handlers нужен для коммуникации по gRPC
 	rpc := handlers.NewRPC(services)
 
 	// Здесь мы аннонсируем по какому адресу можно обращаться к нашему сервису
@@ -43,17 +43,15 @@ func main() {
 		log.Fatalf("Failed to listen to: %v", err)
 	}
 
-	// Здесь мы создаем пустой grpc сервер в котором зарегистрируем наш rpc сервис
+	// Здесь мы создаем пустой grpc сервер в котором зарегистрируем наш gRPC сервис
 	s := grpc.NewServer()
 	libraryServicePb.RegisterLibraryServiceServer(s, rpc)
 
-	
 	log.Println("Library Service started.")
 	if err := s.Serve(lis); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
-
 
 func initConfig() error {
 	viper.AddConfigPath("configs")
@@ -77,6 +75,6 @@ func repositoryConfig() repository.Config {
 
 // Получение адреса для сервиса
 func hostname() string {
-	hostname := fmt.Sprintf("%s:%s",viper.GetString("host"),viper.GetString("port"))
+	hostname := fmt.Sprintf("%s:%s", viper.GetString("host"), viper.GetString("port"))
 	return hostname
 }
