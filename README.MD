@@ -47,11 +47,41 @@ make db
 ```
 6. Загрузить зависимости. (Если возникнут проблемы на данном этапе, попробовать ```go mod tidy```)
 ```
-go mod dowload
+go mod download
 ```
 7. Запустить проект локально.
 ```
 make local
+```
+
+### Пример того, как можно сделать запрос через gRPC в сервис из Postman
+1. Нажав на New, нужно выбрать gRPC request.
+![](assets/postman-0.png)
+2. Нужно импортировать .proto файл с методами.
+![](assets/postman-1.png)
+3. Выбрать файл по адресу library-service\proto\libraryServicePb\libraryService.proto
+![](assets/postman-2.png)
+4. Нажать Next.
+![](assets/postman-3.png)
+5. Нажать на Import API.
+![](assets/postman-4.png)
+6. В качестве хоста лучше использовать ```0.0.0.0:50051``` , если не указывали иначе.
+![](assets/postman-5.png)
+7. Нужно нажать на вкладку message под полем, где вводили хост.Ниже пример запроса GetAuthorsOfBook
+![](assets/postman-6.png)
+Текст сообщения:
+```
+{
+  "bookName": "Organic Chemistry"
+}
+```
+8. Пример запроса GetBooksByAuthor
+![](assets/postman-7.png)
+Текст сообщения:
+```
+{
+  "authorName": "Leo Tolstoy"
+}
 ```
 
 ### Пример того, как можно сделать запрос через gRPC в сервис из Postman
