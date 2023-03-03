@@ -23,7 +23,7 @@
 ```
 git clone https://github.com/rogudator/library-service.git
 ```
-2. И перейти в папку сервиса.
+2. Перейти в папку сервиса.
 ```
 cd library-service
 ```
@@ -63,7 +63,7 @@ make local
 ![](assets/postman-2.png)
 4. Нажать Next.
 ![](assets/postman-3.png)
-5. Нажав Import API.
+5. Нажать на Import API.
 ![](assets/postman-4.png)
 6. В качестве хоста лучше использовать ```0.0.0.0:50051``` , если не указывали иначе.
 ![](assets/postman-5.png)

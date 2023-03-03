@@ -37,7 +37,7 @@ func main() {
 	// 3. Handlers нужен для коммуникации по gRPC
 	rpc := handlers.NewRPC(services)
 
-	// Здесь мы аннонсируем по какому адресу можно обращаться к нашему сервису
+	// Здесь мы анонсируем по какому адресу можно обращаться к нашему сервису
 	lis, err := net.Listen("tcp", hostname())
 	if err != nil {
 		log.Fatalf("Failed to listen to: %v", err)
