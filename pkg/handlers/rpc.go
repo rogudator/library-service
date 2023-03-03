@@ -9,7 +9,7 @@ import (
 
 // Список возможных ошибок:
 var (
-	ErrNoResults        = errors.New("there are no results")
+	ErrEmptyInput       = errors.New("nothing was entered")
 	ErrAuthorNotPresent = errors.New("library does not have this author")
 	ErrBookNotPresent   = errors.New("library does not have this book")
 )
